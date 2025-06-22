@@ -1,0 +1,125 @@
+      * {
+        margin: 0;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: #f5f8fa;
+      }
+      .navbar a{
+        text-decoration: none;
+      }
+
+      nav.navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+        padding: 1rem 2rem;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #ffffff;
+        letter-spacing: 1px;
+      }
+
+      .logo span {
+        color: #00dfd8;
+      }
+
+      .profile-wrapper {
+        position: relative;
+      }
+
+      .profile-circle {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background-color: #fff;
+        color: #2c5364;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .profile-circle:hover {
+        transform: scale(1.1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      .dropdown {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        width: 200px;
+        animation: fadeIn 0.3s ease-in-out forwards;
+        overflow: hidden;
+        flex-direction: column;
+      }
+
+      .dropdown a {
+        padding: 12px 16px;
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        border-bottom: 1px solid #eee;
+        transition: background 0.2s;
+      }
+
+      .dropdown a:last-child {
+        border-bottom: none;
+      }
+
+      .dropdown a:hover {
+        background-color: #f0faff;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        nav.navbar {
+          padding: 0.5rem 1rem;
+        }
+
+        .logo {
+          font-size: 1.4rem;
+        }
+
+        .profile-circle {
+          width: 40px;
+          height: 40px;
+          font-size: 1rem;
+        }
+
+        .dropdown {
+          width:85vw;
+          border-radius: 10px;
+          background-color: skin;
+          text-align: center;
+        }
+      }

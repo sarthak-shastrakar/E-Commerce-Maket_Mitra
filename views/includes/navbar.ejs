@@ -1,0 +1,57 @@
+
+
+ <link rel="stylesheet" href="/css/navbar.css" /> 
+
+
+  
+  <body>
+    <nav class="navbar">
+      <a href="/listings">
+        <div class="logo"><span class="logo-icon">🛒</span>Market<span>Mitra</span></div>
+      </a>
+      <div class="profile-wrapper">
+        <% if (currentUser) { %>
+        <div class="profile-circle" onclick="toggleDropdown()">
+          <%= currentUser.name[0].toUpperCase() %>
+        </div>
+        <div class="dropdown" id="dropdownMenu">
+          <a href="/listings">Home</a>
+          <a href="/listings/new">Add Product</a>
+          <a href="/listings/userproduct">User's Products</a>
+        <!-- <a href="/listings/search">Product Search by Image</a> -->
+        <a href="/listings/chatbotsuggest">Get Suggestion by AI</a>
+          <a href="/logout">Logout</a>
+          <a href="/listings/userProfile">Welcome,<%= currentUser.name.split(' ')[0] %></a>
+        </div>
+        
+        <% } else { %>
+        <div class="profile-circle" onclick="toggleDropdown()">G</div>
+        <div class="dropdown" id="dropdownMenu">
+          <a href="/listings">Home</a>
+          <!-- <a href="/listings/new">Add Product</a> -->
+          <a href="/listings/userproduct">User's Products</a>
+          <a href="/login">Login</a>
+          <a href="/signup">Sign Up</a>
+        </div>
+        <% } %>
+      </div>
+    </nav>
+
+    <script>
+      function toggleDropdown() {
+        const dropdown = document.getElementById("dropdownMenu");
+        dropdown.style.display =
+          dropdown.style.display === "flex" ? "none" : "flex";
+        dropdown.style.flexDirection = "column";
+      }
+
+      document.addEventListener("click", function (e) {
+        const profileWrapper = document.querySelector(".profile-wrapper");
+        const dropdown = document.getElementById("dropdownMenu");
+        if (!profileWrapper.contains(e.target)) {
+          dropdown.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>

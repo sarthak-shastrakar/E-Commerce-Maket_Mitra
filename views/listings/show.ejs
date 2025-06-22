@@ -1,0 +1,167 @@
+<% layout("/layouts/boilerplate") %>
+<link rel="stylesheet" href="/css/showproduct.css" />
+<script type="module" src="/js/userproduct.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<body class="">
+  <div class="container">
+    <div class="left-part-card">
+      <div class="card">
+        <div class="slider">
+          <div class="slides" id="slides">
+            <% if (listing.images && listing.images.length > 0) { %> <%
+            listing.images.forEach(image => { %>
+            <div class="slide">
+              <img src="<%= image.url %>" alt="Product Image" />
+            </div>
+            <% }) %> <% } else { %>
+            <div class="slide">
+              <img
+                src="https://via.placeholder.com/280x180?text=No+Image"
+                alt="No Image"
+              />
+            </div>
+            <% } %>
+          </div>
+        </div>
+        <div class="button-group">
+          <button class="btn-shine" id="nextBtn">
+            <span>Next Image ➡</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-part-card">
+      <div class="card">
+        <div class="card__shine"></div>
+        <div class="card__glow"></div>
+        <div class="card__content">
+          <div class="card__badge">NEW</div>
+          <div style="--bg-color: #a78bfa" class="card__image">
+            <% if (listing.images && listing.images.length > 0) { %>
+            <img
+              src="<%= listing.images[0].url %>"
+              alt="<%= listing.title %>"
+              style="width: 100%; border-radius: 12px"
+            />
+            <% } else { %>
+            <img
+              src="https://via.placeholder.com/280x180?text=No+Image"
+              alt="No Image"
+              style="width: 100%; border-radius: 12px"
+            />
+            <% } %>
+          </div>
+          <div class="card__text">
+            <p class="card__title"><%= listing.title %></p>
+            <p class="card__description"><%= listing.description %></p>
+            <div class="card__price">₹<%= listing.price %></div>
+            <p style="font-weight: 500; font-size: 0.95rem; color: #444">
+              👤 <strong>Owner:</strong> <%= listing.owner?.name || "Unknown" %>
+            </p>
+          </div>
+          <div class="card__footer">
+            <button class="btn-shine">
+              <span>🛒 Buy Now</span>
+            </button>
+
+            <button class="btn-shine">
+              <span
+                ><a href="/listings/userproduct" style="text-decoration: none"
+                  >← Back</a
+                ></span
+              >
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div class="review-container float-animation">
+      <% if (currentUser) { %>
+      <div class="review-form-container">
+        <form
+          action="/listings/<%= listing._id %>/reviews"
+          method="POST"
+          class="review-form"
+        >
+          <h3>📝 Leave a Review</h3>
+          <label for="rating">Rating:</label>
+          <select name="review[rating]" id="rating">
+            <% for(let j=1; j<=5; j++) { %>
+            <option value="<%= j %>"><%= '⭐'.repeat(j) %></option>
+            <% } %>
+          </select>
+
+          <label for="comment">Comment:</label>
+          <textarea name="review[comment]" required></textarea>
+
+          <button class="btn-shine">
+            <span>SUBMIT REVIEW</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <hr />
+    <div class="all-review-container">
+      <div>
+        <p
+          class="heading-review"
+          style="
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 2rem;
+            font-weight: 900;
+          "
+        >
+          📝 All Review
+        </p>
+      </div>
+
+      <% } else { %>
+      <div class="review-check" style="text-align: center">
+        <p><a href="/login">Login</a> to post a review.</p>
+      </div>
+      <% } %>
+
+      <ul
+        class="review-list"
+        data-aos="zoom-in-up"
+        data-aos-duration="1000"
+        data-aos-mirror="true"
+      >
+        <% for(let review of listing.reviews) { %>
+        <li class="review-item">
+          <strong><%= '⭐'.repeat(review.rating) %></strong>✍️ <%=
+          review.comment %>
+          <br />
+          <small>
+            👤 <%= review.author ? review.author.name : "Unknown User" %>
+          </small>
+          <small>
+            🕒 <% if (review.createdAt) { %> <%= new
+            Date(review.createdAt).toDateString() %> <% } else { %> Unknown Date
+            <% } %>
+          </small>
+
+          <% if (currentUser && review.author && currentUser._id.toString() ===
+          review.author._id.toString()) { %>
+          <form
+            method="POST"
+            action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
+          >
+            <button type="submit">🗑️ Delete</button>
+          </form>
+          <% } %>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>

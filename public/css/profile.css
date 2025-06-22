@@ -1,0 +1,135 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f3f7fa, #e3eff9);
+  margin: 0;
+  color: #333;
+}
+
+.profile-wrapper {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.profile-container {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+  border: 2px solid #eef2f7;
+}
+
+.profile-container:hover {
+  transform: scale(1.01);
+}
+
+.profile-header h1 {
+  font-weight: 600;
+}
+
+.profile-info p {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.product-card {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.card-img-top {
+  object-fit: cover;
+  height: 200px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.animate-zoom-in {
+  animation: zoomIn 0.5s ease-in-out;
+}
+
+/* From Uiverse.io by cssbuttons-io */ 
+button {
+ width: 150px;
+ height: 50px;
+ cursor: pointer;
+ display: flex;
+ align-items: center;
+ background: red;
+ border: none;
+ border-radius: 5px;
+ box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+ background: #e62222;
+}
+
+button, button span {
+ transition: 200ms;
+}
+
+button .text {
+ transform: translateX(35px);
+ color: white;
+ font-weight: bold;
+}
+
+button .icon {
+ position: absolute;
+ border-left: 1px solid #c41b1b;
+ transform: translateX(110px);
+ height: 40px;
+ width: 40px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
+button svg {
+ width: 15px;
+ fill: #eee;
+}
+
+button:hover {
+ background: #ff3636;
+}
+
+button:hover .text {
+ color: transparent;
+}
+
+button:hover .icon {
+ width: 150px;
+ border-left: none;
+ transform: translateX(0);
+}
+
+button:focus {
+ outline: none;
+}
+
+button:active .icon svg {
+ transform: scale(0.8);
+}

@@ -1,0 +1,267 @@
+.filters{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.filter{
+    margin-top: 1rem;
+    opacity: 0.7;
+    margin-right:2rem ;
+
+    text-align: center;
+
+}
+.filter:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+.filters .filter p{
+    font-size: 0.8rem;
+}
+.tarSwitchtoggle{
+    border: 1px solid gray;
+    height: 3.3rem;
+    padding: 1rem ;
+    border-radius: 10px;
+    
+}
+.tax-toggle{
+    display: none;
+}
+/* search button css */
+.search-btn{
+    border: 1px solid grey;
+    background-color: #fe424d;
+    color: white;
+    border-radius: 50%;
+}
+.search-btn:hover{
+    border: 1px solid grey;
+    background-color: #fe424d;
+    color: white;
+    border-radius: 50%;
+}
+.search-input{
+    border-radius: 8px;
+    padding: 0rem 3rem 0rem 3rem;
+}
+
+
+/* user prfoile css */
+  /* Profile Dropdown Styles */
+        .profile-dropdown {
+            position: relative;
+        }
+
+        .profile-circle {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-circle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .profile-circle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .profile-circle.logged-in {
+            background: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face') center/cover;
+            border: 3px solid #667eea;
+        }
+
+        .profile-icon {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .profile-circle.logged-in .profile-icon {
+            display: none;
+        }
+
+        /* Dropdown Menu */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+            margin-top: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(20px);
+            z-index: 1001;
+        }
+
+        .dropdown-menu.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            right: 20px;
+            width: 16px;
+            height: 16px;
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-bottom: none;
+            border-right: none;
+            transform: rotate(45deg);
+        }
+
+        .dropdown-header {
+            padding: 15px 20px 10px;
+            border-bottom: 1px solid #f0f0f0;
+            margin-bottom: 5px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .user-avatar.logged-in {
+            background: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face') center/cover;
+        }
+
+        .user-details h4 {
+            font-size: 0.9rem;
+            color: #333;
+            margin-bottom: 2px;
+        }
+
+        .user-details p {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.2s ease;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-item:hover {
+            background: #f8f9fa;
+            color: #667eea;
+        }
+
+        .dropdown-item:last-child {
+            border-radius: 0 0 15px 15px;
+        }
+
+        .dropdown-item i {
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background: #f0f0f0;
+            margin: 5px 0;
+        }
+        /* Demo Content */
+        .demo-content {
+            margin-top: 100px;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .demo-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .demo-content p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .demo-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .demo-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .demo-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+   

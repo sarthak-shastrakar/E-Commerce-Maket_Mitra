@@ -1,0 +1,80 @@
+<% layout("/layouts/boilerplate") %>
+<link rel="stylesheet" href="/css/EditForm.css">
+
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+  <div class="edit-container animate__animated animate__fadeInUp">
+    <h1><i class="fas fa-pen-to-square"></i> Edit Product</h1>
+
+    <form
+      action="/listings/<%= listing._id %>?_method=PUT"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <div class="form-group">
+        <label for="title"><i class="fas fa-heading"></i> Title</label>
+        <input
+          type="text"
+          name="listing[title]"
+          id="title"
+          value="<%= listing.title %>"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description"><i class="fas fa-align-left"></i> Description</label>
+        <textarea
+          name="listing[description]"
+          id="description"
+          class="form-control"
+          rows="4"
+          required
+        ><%= listing.description %></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="price"><i class="fas fa-tags"></i> Price</label>
+        <input
+          type="number"
+          name="listing[price]"
+          id="price"
+          value="<%= listing.price %>"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <!-- Existing Images Preview -->
+      <div class="form-group image-preview">
+        <% listing.images.forEach(image => { %>
+          <img src="<%= image.url %>" alt="Product Image" />
+        <% }) %>
+      </div>
+
+      <!-- Multiple Image Upload -->
+      <div class="form-group">
+        <label for="image"><i class="fas fa-image"></i> Upload New Images (Max 3-4)</label>
+        <input
+          type="file"
+          name="image"
+          id="image"
+          class="form-control-file"
+          multiple
+          accept="image/*"
+        />
+        <small style="color: #666;">Hold Ctrl (or Cmd) to select multiple images</small>
+      </div>
+
+      <button type="submit" class="btn-submit">
+        <i class="fas fa-save"></i> Update Product
+      </button>
+    </form>
+  </div>
+</body>

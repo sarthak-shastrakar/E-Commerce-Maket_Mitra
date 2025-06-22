@@ -1,0 +1,85 @@
+<% layout("/layouts/boilerplate") %>
+ <link rel="stylesheet" href="/css/form.css" /> 
+
+  <body>
+    <div class="container">
+      <form
+        class="glass-form"
+        action="/listings/userproduct"
+        method="POST"
+        enctype="multipart/form-data"
+        onsubmit="return validateForm()"
+      >
+        <h2><i class="fa-solid fa-plus"></i> Add Product</h2>
+
+        <div class="form-group">
+          <input type="text" name="title" class="form-control" required />
+          <label><i class="fa-solid fa-heading"></i> Title</label>
+        </div>
+
+        <div class="form-group">
+          <textarea
+            name="description"
+            class="form-control"
+            maxlength="250"
+            required
+            oninput="updateCharCount(this)"
+          ></textarea>
+          <label><i class="fa-solid fa-align-left"></i> Description</label>
+          <div class="char-count"><span id="desc-count">0</span>/250</div>
+        </div>
+
+        <div class="form-group file-upload">
+          <input type="file" name="image" id="upload" multiple class="form-control" />
+          <label for="upload" class="upload-btn ">
+            <i class="fa-solid fa-image"></i> Choose Images
+          </label>
+        </div>
+
+        <div class="form-group">
+          <input type="text" name="location" class="form-control" required />
+          <label><i class="fa-solid fa-location-dot"></i> Location</label>
+        </div>
+
+        <div class="form-group">
+          <input type="text" name="country" class="form-control" required />
+          <label><i class="fa-solid fa-flag"></i> Country</label>
+        </div>
+
+        <div class="form-group">
+          <input type="number" name="price" class="form-control" required />
+          <label><i class="fa-solid fa-dollar-sign"></i> Price</label>
+        </div>
+
+        <div class="form-group">
+          <input type="text" name="category" class="form-control" required />
+          <label><i class="fa-solid fa-tags"></i> Category</label>
+        </div>
+
+        <div class="form-group">
+          <input type="number" name="stock" class="form-control" required />
+          <label><i class="fa-solid fa-boxes-stacked"></i> Stock</label>
+        </div>
+
+        <button type="submit" class="submit-btn">🚀 Create Listing</button>
+      </form>
+    </div>
+
+    <!-- <script>
+      function validateForm() {
+        const fields = document.querySelectorAll(".form-control[required]");
+        for (let field of fields) {
+          if (!field.value.trim()) {
+            alert("Please fill all required fields.");
+            field.focus();
+            return false;
+          }
+        }
+        return true;
+      }
+
+      function updateCharCount(el) {
+        document.getElementById("desc-count").innerText = el.value.length;
+      }
+    </script> -->
+  </body>

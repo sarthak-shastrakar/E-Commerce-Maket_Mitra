@@ -1,0 +1,141 @@
+  body {
+    margin: 0;
+    background: linear-gradient(120deg, #2c3e50, #34495e);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2c3e50;
+  }
+
+  .edit-container {
+    max-width: 600px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 0.8s ease;
+    backdrop-filter: blur(6px);
+    transition: transform 0.4s ease;
+  }
+
+  .edit-container:hover {
+    transform: translateY(-5px);
+  }
+
+  .edit-container h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    position: relative;
+  }
+
+  .edit-container h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #3498db;
+    margin: 10px auto 0;
+    border-radius: 10px;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #34495e;
+  }
+
+  .form-group i {
+    margin-right: 8px;
+    color: #3498db;
+  }
+
+  .form-control,
+  .form-control-file {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .form-control:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+  }
+
+  .image-preview {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    justify-content: center;
+  }
+
+  .image-preview img {
+    width: 100px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+  }
+
+  .image-preview img:hover {
+    transform: scale(1.05);
+  }
+
+  .btn-submit {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    font-size: 1.1rem;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+  }
+
+  .btn-submit:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .edit-container {
+      padding: 1.5rem ;
+      margin: 8px;
+      border-radius: 10px;
+    }
+
+    .edit-container h1 {
+      font-size: 1.6rem;
+    }
+
+    .image-preview img {
+      width: 90px;
+      height: 60px;
+    }
+  }
