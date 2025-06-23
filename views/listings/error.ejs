@@ -3,104 +3,112 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Welcome | Dashboard</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    rel="stylesheet"
-  />
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to right, #e0f7fa, #c8e6c9);
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      text-align: center;
-      color: #333;
-    }
-
-    .container {
-      max-width: 700px;
-      padding: 30px 20px;
-      animation: fadeIn 1s ease-out;
-    }
-
-    .heading h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: #00796b;
-      margin-bottom: 15px;
-    }
-
-    .heading p {
-      font-size: 1.2rem;
-      color: #444;
-      margin-bottom: 30px;
-    }
-
-    .btn-home {
-      display: inline-block;
-      padding: 12px 28px;
-      font-size: 1rem;
-      border-radius: 30px;
-      background-color: #00796b;
-      color: white;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
-    }
-
-    .btn-home:hover {
-      background-color: #004d40;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
+  <head>
+    <meta charset="UTF-8" />
+    <title>Welcome | Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(to right, #e0f7fa, #c8e6c9);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        color: #333;
       }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
 
-    @media (max-width: 576px) {
+      .container {
+        max-width: 700px;
+        padding: 30px 20px;
+        animation: fadeIn 1s ease-out;
+      }
+
       .heading h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #00796b;
+        margin-bottom: 15px;
       }
 
       .heading p {
-        font-size: 1rem;
+        font-size: 1.2rem;
+        color: #444;
+        margin-bottom: 30px;
       }
 
       .btn-home {
-        width: 100%;
-        padding: 10px;
+        display: inline-block;
+        padding: 12px 28px;
+        font-size: 1rem;
+        border-radius: 30px;
+        background-color: #00796b;
+        color: white;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
       }
-    }
-  </style>
-</head>
-<body>
 
-  <div class="container">
-    <div class="heading">
-      <h1><i class="fas fa-seedling"></i> Welcome to Your Dashboard</h1>
-      <p>You're logged in and ready to manage your listings and profile. Click below to return to the homepage.</p>
-      <a href="/listings" class="btn-home">
-        <i class="fas fa-home me-1"></i> Go to Homepage
-      </a>
+      .btn-home:hover {
+        background-color: #004d40;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 576px) {
+        .heading h1 {
+          font-size: 2rem;
+        }
+
+        .heading p {
+          font-size: 1rem;
+        }
+
+        .btn-home {
+          width: 100%;
+          padding: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="error">
+        <% if (error && typeof error === "object") { %>
+        <pre><%= JSON.stringify(error, null, 2) %></pre>
+        <% } else if (error) { %>
+        <p class="text-danger"><%= error %></p>
+        <% } %>
+      </div>
+      <div class="heading">
+        <h1><i class="fas fa-seedling"></i> Welcome to Your Dashboard</h1>
+        <p>
+          You're logged in and ready to manage your listings and profile. Click
+          below to return to the homepage.
+        </p>
+        <a href="/listings" class="btn-home">
+          <i class="fas fa-home me-1"></i> Go to Homepage
+        </a>
+      </div>
     </div>
-  </div>
-
-</body>
+  </body>
 </html>
 
 <!-- 

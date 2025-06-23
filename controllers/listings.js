@@ -50,12 +50,17 @@ module.exports.showProduct = async (req, res) => {
 // create route controller
 module.exports.createProduct = async (req, res, next) => {
   try {
-    // Create new listing from request body
     const newListing = new ProductListing(req.body.listing);
-    newListing.images = req.files.map((f) => ({
-      url: f.path,
-      filename: f.filename,
-    }));
+
+    // Only map images if files exist
+    if (req.files && req.files.length > 0) {
+      newListing.images = req.files.map((f) => ({
+        url: f.path,
+        filename: f.filename,
+      }));
+    }
+
+    // Populate other fields (directly from req.body instead of req.body.listing)
     newListing.title = req.body.title;
     newListing.description = req.body.description;
     newListing.category = req.body.category;
@@ -68,9 +73,12 @@ module.exports.createProduct = async (req, res, next) => {
     req.flash("success", "Product created successfully!");
     res.redirect("/listings/userproduct");
   } catch (err) {
-    next(err);
+    console.error("Create product error:", err);
+    req.flash("error", err.message || "Something went wrong");
+    res.redirect("/listings/new"); // or wherever your form page is
   }
 };
+
 
 // edit route controller
 module.exports.renderEditForm = async (req, res) => {
@@ -106,43 +114,49 @@ module.exports.updateProduct = async (req, res) => {
   try {
     const { id } = req.params;
 
-    // Find the listing
     const listing = await ProductListing.findById(id);
     if (!listing) {
       req.flash("error", "Listing not found");
       return res.redirect("/listings");
     }
 
-    // Update text fields
+    // Update fields
     listing.title = req.body.listing.title;
     listing.description = req.body.listing.description;
     listing.price = req.body.listing.price;
 
-    // Update image if a new one is uploaded
+    // Handle images
     if (req.files && req.files.length > 0) {
+      // Delete old images
       for (let img of listing.images) {
         await cloudinary.uploader.destroy(img.filename);
       }
 
+      // Add new images
       listing.images = req.files.map((f) => ({
         url: f.path,
         filename: f.filename,
       }));
     }
 
-    // Save updated product
     await listing.save();
     req.flash("success", "Product updated successfully!");
     res.redirect("/listings/userproduct");
+
   } catch (err) {
     console.error("Error updating product:", err);
-    req.flash("error", "Something went wrong");
+    req.flash("error", err.message || "Something went wrong");
 
-    //replace this line
-    const allListings = await ProductListing.find({});
-    res.render("listings/userproduct.ejs", { allListings });
+    try {
+      const allListings = await ProductListing.find({});
+      res.render("listings/userproduct.ejs", { allListings });
+    } catch (e) {
+      console.error("Error rendering fallback:", e);
+      res.redirect("/listings");
+    }
   }
 };
+
 
 module.exports.deleteProduct = async (req, res) => {
   try {
