@@ -15,7 +15,7 @@ const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
     folder: "E-localstore", // uploads will be stored in this folder
-    allowed_formats: ["png", "jpg", "jpeg", "pdf"],
+    allowed_formats: ["png", "jpg", "jpeg", "pdf", "webp"],
   },
 });
 
