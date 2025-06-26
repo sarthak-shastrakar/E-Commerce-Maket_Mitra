@@ -1,10 +1,15 @@
 <% layout("/layouts/boilerplate") %>
-<link rel="stylesheet" href="/css/EditForm.css">
-
+<link rel="stylesheet" href="/css/EditForm.css" />
 
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body>
@@ -29,14 +34,18 @@
       </div>
 
       <div class="form-group">
-        <label for="description"><i class="fas fa-align-left"></i> Description</label>
+        <label for="description"
+          ><i class="fas fa-align-left"></i> Description</label
+        >
         <textarea
           name="listing[description]"
           id="description"
           class="form-control"
           rows="4"
           required
-        ><%= listing.description %></textarea>
+        >
+<%= listing.description %></textarea
+        >
       </div>
 
       <div class="form-group">
@@ -54,13 +63,15 @@
       <!-- Existing Images Preview -->
       <div class="form-group image-preview">
         <% listing.images.forEach(image => { %>
-          <img src="<%= image.url %>" alt="Product Image" />
+        <img src="<%= image.url %>" alt="Product Image" />
         <% }) %>
       </div>
 
       <!-- Multiple Image Upload -->
       <div class="form-group">
-        <label for="image"><i class="fas fa-image"></i> Upload New Images (Max 3-4)</label>
+        <label for="image"
+          ><i class="fas fa-image"></i> Upload New Images (Max 3-4)</label
+        >
         <input
           type="file"
           name="image"
@@ -69,7 +80,23 @@
           multiple
           accept="image/*"
         />
-        <small style="color: #666;">Hold Ctrl (or Cmd) to select multiple images</small>
+        <small style="color: #666"
+          >Hold Ctrl (or Cmd) to select multiple images</small
+        >
+      </div>
+      <div class="form-group">
+        <label for="rating"><i class="fas fa-star"></i> Rating</label>
+        <input
+          type="number"
+          name="listing[rating]"
+          id="rating"
+          value="<%= listing.rating %>"
+          class="form-control"
+          min="0"
+          max="10"
+          step="0.1"
+          required
+        />
       </div>
 
       <button type="submit" class="btn-submit">

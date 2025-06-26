@@ -65,7 +65,7 @@ module.exports.createProduct = async (req, res, next) => {
     newListing.description = req.body.description;
     newListing.category = req.body.category;
     newListing.price = req.body.price;
-    newListing.location = req.body.location;
+    newListing.rating = req.body.rating;
     newListing.country = req.body.country;
     newListing.owner = req.user._id;
 
@@ -124,6 +124,7 @@ module.exports.updateProduct = async (req, res) => {
     listing.title = req.body.listing.title;
     listing.description = req.body.listing.description;
     listing.price = req.body.listing.price;
+    listing.rating = req.body.listing.rating;
 
     // Handle images
     if (req.files && req.files.length > 0) {
@@ -156,6 +157,8 @@ module.exports.updateProduct = async (req, res) => {
     }
   }
 };
+
+
 
 
 module.exports.deleteProduct = async (req, res) => {
@@ -224,55 +227,3 @@ module.exports.chatbotpage = async (req, res) => {
 };
 
 
-
-
-
-
-// // image to product search
-// const Searchproduct = require("../models/productsearch.js");
-// const fs = require("fs");
-// const path = require("path");
-// const getImageTagsFromImage = require("../util/imagesearch");
-
-
-// // // Mock tag extraction — replace with actual logic
-// // async function getImageTagsFromImage(imageUrl) {
-// //   console.log("Image URL for recognition:", imageUrl);
-
-// //   // Simulated labels (replace with real API call)
-// //   return ["shirt", "blue", "cotton"];
-// // }
-
-// exports.imageSearchPage = async (req, res) => { 
-//   // GET route – just render form
-//   res.render("listings/ProductSearch", { listings: null, tags: [] });
-// };
-
-// exports.imageSearchHandler = async (req, res) => {
-//   try {
-//     const imageUrl = req.file.path; // Cloudinary URL
-
-//     let tags = await getImageTagsFromImage(imageUrl);
-//     console.log("Extracted tags:", tags);
-
-//     // Optional: remove noisy tags
-//     const IGNORED_TAGS = ["illustration", "collection", "vector", "art"];
-//     tags = tags.filter(t => !IGNORED_TAGS.includes(t.toLowerCase()));
-
-//     const regexTags = tags.map(tag => new RegExp(tag, "i"));
-
-//     const listings = await Searchproduct.find({
-//       owner: { $exists: true },
-//       $or: [
-//         { title: { $in: regexTags } },
-//         { description: { $in: regexTags } },
-//         { category: { $in: regexTags } }
-//       ]
-//     });
-
-//     res.render("listings/ProductSearch", { listings, tags });
-//   } catch (err) {
-//     console.error("Image search error:", err);
-//     res.status(500).send("Search failed: " + err.message);
-//   }
-// };

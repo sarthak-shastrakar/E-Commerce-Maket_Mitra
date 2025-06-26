@@ -1,22 +1,6 @@
 <% layout("/layouts/boilerplate") %>
 <link rel="stylesheet" href="/css/userproduct.css" />
 
-<script>
-  // Auto-Rotate Images in each image-carousel
-  document.querySelectorAll(".image-carousel").forEach((carousel) => {
-    const imgs = carousel.querySelectorAll(".carousel-img");
-    let index = 0;
-
-    if (imgs.length > 1) {
-      setInterval(() => {
-        imgs.forEach((img) => img.classList.remove("active"));
-        index = (index + 1) % imgs.length;
-        imgs[index].classList.add("active");
-      }, Number(carousel.dataset.interval) || 3000);
-    }
-  });
-</script>
-
 <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -29,10 +13,7 @@
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
 />
-<link
-  href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
-  rel="stylesheet"
-/>
+
 <body>
   <h1 class="product-heading animate__animated animate__fadeInDown">
     🛍️ User's Products
@@ -40,7 +21,9 @@
   </h1>
 
   <% if (allListings.length === 0) { %>
-  <p>No products found.</p>
+  <p style="text-align: center; font-size: 1.2rem; color: #555">
+    No products found.
+  </p>
   <% } else { %>
   <div class="product-grid">
     <% for (let listing of allListings) { %>
@@ -73,19 +56,43 @@
         </div>
       </a>
 
-      <div class="product-info">
-        <h3 class="product-title animate__animated animate__fadeInDown">
+      <div
+        class="product-info"
+        style="font-family: 'Segoe UI', sans-serif; color: #333"
+      >
+        <h3
+          class="product-title animate__animated animate__fadeInDown"
+          style="font-weight: bold; font-size: 1.2rem; color: #2c3e50"
+        >
           <%= listing.title %>
         </h3>
-        <p><i class="fas fa-align-left"></i>&nbsp;<%= listing.description %></p>
-        <p>
-          <i class="fas fa-layer-group"></i>Category: <%= listing.category %>
+
+        <p style="color: #666">
+          <i class="fas fa-align-left"></i>&nbsp;
+          <span style="font-style: italic"><%= listing.description %></span>
         </p>
+
         <p>
-          <i class="fa-solid fa-tag"></i>Price: &#8377;<%=
-          listing.price.toLocaleString("en-IN") %>
+          <i class="fas fa-layer-group"></i> Category:
+          <strong><%= listing.category %></strong>
         </p>
-        <p style="font-weight: 500; font-size: 0.95rem; color: #444">
+
+        <p>
+          <i class="fa-solid fa-globe"></i> Country:
+          <strong><%= listing.country %></strong>
+        </p>
+
+        <p>
+          <i class="fa-solid fa-heart"></i> Rating:
+          <%= listing.rating %>
+        </p>
+
+        <p>
+          <i class="fa-solid fa-tag"></i> Price:
+       &#8377;<%= listing.price %>
+        </p>
+
+        <p style="font-weight: 500; font-size: 0.95rem; color: #555">
           👤 <strong>Owner:</strong>
           <% if (currentUser && listing.owner?._id.toString() ===
           currentUser._id.toString()) { %>
@@ -93,12 +100,13 @@
           <% } else { %> <%= listing.owner?.name || "Unknown" %> <% } %>
         </p>
 
-        <div class="product-actions">
+        <div class="product-actions" style="margin-top: 10px">
           <% if (currentUser && listing.owner && listing.owner._id.toString()
           === currentUser._id.toString()) { %>
           <form
             action="/listings/<%= listing._id %>?_method=DELETE"
             method="POST"
+            style="display: inline-block"
           >
             <button class="btn btn-danger p-2 px-3">Delete</button>
           </form>
@@ -109,6 +117,7 @@
 
           <button
             class="buy-btn animate__animated animate__pulse animate__infinite"
+           
           >
             <i class="fas fa-cart-plus"></i> Buy Now
           </button>
