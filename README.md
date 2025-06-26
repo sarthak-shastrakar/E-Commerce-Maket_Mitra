@@ -4,7 +4,7 @@ MARKET MITRA is a full-stack e-commerce web application designed for local store
 
 ## 🚀 Live Demo
 
-🌐 [Click to Visit Live Site](https://your-render-url.onrender.com)  
+🌐 [Click to Visit Live Site](https://e-commerce-maket-mitra.onrender.com) 
 ---
 
 ## 📸 Preview
