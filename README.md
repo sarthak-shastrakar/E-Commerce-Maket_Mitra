@@ -29,8 +29,6 @@ MARKET MITRA is a full-stack e-commerce web application designed for local store
 ✅ Product upload by store admins  
 ✅ Image upload support (e.g., Cloudinary)  
 ✅ Product filtering (price, category, availability)  
-✅ Sorting by popularity, price, newest  
-✅ Search functionality  
 ✅ User profile page  
 ✅ Glassmorphism UI with animation  
 ✅ Responsive design for mobile & desktop  
