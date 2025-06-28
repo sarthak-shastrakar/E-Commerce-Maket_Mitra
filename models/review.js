@@ -10,11 +10,11 @@ const reviewSchema = new Schema({
   },
   createdAt: {
     type: Date,
-    default: Date.now, // ✅ Correct
+    default: Date.now, 
   },
   author: {
     type: Schema.Types.ObjectId,
-    ref: "User", // ✅ Keep ref to relate user
+    ref: "User",
   },
 });
 

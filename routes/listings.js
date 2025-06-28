@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const listingController = require("../controllers/listings.js");
-// const { listingSchema } = require("../schema.js");
-// const ExpressError = require("../util/ExpressError.js");
 const { validateListing } = require("../middleware/auth.js");
 const { isLoggedIn } = require("../middleware/auth");
 // 🔽 NEW: Multer + Cloudinary config

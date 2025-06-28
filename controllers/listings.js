@@ -199,10 +199,6 @@ module.exports.deleteProduct = async (req, res) => {
 // Profile page controller
 
 module.exports.Profile = async (req,res) =>{
-  //  res.render("listings/profilepage.ejs"); 
-  // const userProducts = await ProductListing.find({ owner: req.user._id });
-  // res.render('listings/profilepage.ejs', { currentUser: req.user, userProducts });
-
  try {
     const userId = req.user._id;
 

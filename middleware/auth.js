@@ -1,21 +1,4 @@
-// const ProductListing = require("./models/listing.js");
-// const ExpressError = require("./util/ExpressError.js");
-// const { listingSchema, reviewSchema } = require("./schema.js");
 
-
-
-
-
-// // joi function for error validation
-// module.exports.validateListing = (req, res, next) => {
-//   let { error } = listingSchema.validate(req.body);
-//   if (error) {
-//     let errorMsg = error.details.map((element) => element.message).join(",");
-//     throw new ExpressError(400, errorMsg);
-//   } else {
-//     next();
-//   }
-// };
 const jwt = require("jsonwebtoken");
 const User = require("../models/user.models.js"); // adjust if needed
 
@@ -48,15 +31,9 @@ module.exports.attachUser = async (req, res, next) => {
     req.user = null;
     res.locals.currentUser = null;
 
-    // 🔄 Optional: redirect if token is invalid (uncomment below line if needed)
-    // return res.redirect("/login");
-
     next();
   }
 };
-
-
-
 
 // middleware/auth.js
 

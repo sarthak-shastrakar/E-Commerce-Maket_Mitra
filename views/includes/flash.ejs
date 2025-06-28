@@ -1,8 +1,9 @@
-<!-- the flash is a special type of the session used for storing messages.Messages are written to the flash and cleard ater being displayed to the user -->
-
 <!-- for success flash -->
 <% if(success && success.length) {%>
-<div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
+<div
+  class="alert alert-success alert-dismissible fade show col-8 offset-2"
+  role="alert"
+>
   <%= success %>
   <span
     type="button"
@@ -15,13 +16,16 @@
 
 <!-- for delete flash -->
 <% if(error && error.length) {%>
-    <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
-      <%= error %>
-      <span
-        type="button"
-        class="btn-close"
-        data-bs-dismiss="alert"
-        aria-label="Close"
-      ></span>
-    </div>
-    <% } %>
+<div
+  class="alert alert-danger alert-dismissible fade show col-8 offset-2"
+  role="alert"
+>
+  <%= error %>
+  <span
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></span>
+</div>
+<% } %>

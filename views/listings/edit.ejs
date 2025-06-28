@@ -44,8 +44,8 @@
           rows="4"
           required
         >
-<%= listing.description %></textarea
-        >
+        <%= listing.description %>
+        </textarea>
       </div>
 
       <div class="form-group">
@@ -70,7 +70,7 @@
       <!-- Multiple Image Upload -->
       <div class="form-group">
         <label for="image"
-          ><i class="fas fa-image"></i> Upload New Images (Max 3-4)</label
+          ><i class="fas fa-image"></i> Upload New Images (Max 2-5)</label
         >
         <input
           type="file"
@@ -80,9 +80,9 @@
           multiple
           accept="image/*"
         />
-        <small style="color: #666"
+        <marquee behavior="" direction=""><small style="color: #666"
           >Hold Ctrl (or Cmd) to select multiple images</small
-        >
+        ></marquee>
       </div>
       <div class="form-group">
         <label for="rating"><i class="fas fa-star"></i> Rating</label>
